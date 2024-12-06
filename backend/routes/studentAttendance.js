@@ -11,10 +11,19 @@ import {
 
 const router = express.Router();
 
-router.post("/",authMiddleware, createStudentAttendance);                // Create a new attendance record
-router.get("/:studentId",authMiddleware, getStudentAttendance);          // Get attendance records for a specific student
-router.put("/:attendanceId",authMiddleware, updateStudentAttendance);    // Update a specific attendance record
-router.delete("/:attendanceId",authMiddleware, deleteStudentAttendance); // Delete a specific attendance record
-router.get("/date/:date",authMiddleware, getAttendanceByDate); // Fetch attendance for all students on a specific date
+// Create a new attendance record
+router.post("/", createStudentAttendance);
 
-export default router
+// Get attendance records for a specific student using registrationNo
+router.get("/:registrationNo", getStudentAttendance);
+
+// Update a specific attendance record by attendanceId
+router.put("/:attendanceId", updateStudentAttendance);
+
+// Delete a specific attendance record by attendanceId
+router.delete("/:attendanceId", deleteStudentAttendance);
+
+// Fetch attendance for all students on a specific date
+router.get("/date/:date", getAttendanceByDate);
+
+export default router;
